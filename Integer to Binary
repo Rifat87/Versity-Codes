@@ -1,0 +1,24 @@
+#include <stdio.h>
+int main()
+{
+	//printf("hello %%,");
+	int a, b, m, count, nbits;
+	nbits = 8*sizeof(int);
+	m = 0x1 << (nbits - 1);
+	unsigned mask ; 
+	
+	do {
+		printf("\nEnter an integer value ('0' to stop): ");
+		scanf("%d", &a);
+		mask = m; 
+		for(count =1; count<= nbits; count++){
+			b = (a & mask) ? 1: 0;
+			printf("%x", b);
+			if(count%4 == 0){
+				printf(" ");
+			}
+			mask>>= 1;
+		}
+	}while(a!=0);
+	return 0;
+}
