@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <ctype.h>
+//Function declaration
+void counter(char line[], int *pv, int *pc, int *pd, int *pw, int *po);
+
+int main()
+{
+    char line[100];
+    int v=0, c=0, d=0, whitespace=0, other=0;
+    printf("enter your text here: ");
+    scanf("%[^\n]",line);
+    counter(line, &v, &c, &d, &whitespace, &other);//function call
+    printf("Total vowel is:%d\nTotal consonent is:%d\n Total digits are:%d\nWhitespace:%d\nAnd others are:%d\n", v, c, d, whitespace, other);
+}
+// counter function
+void counter(char line[], int *pv, int *pc, int *pd, int *pw, int *po)
+{
+    char c;
+    int count= 0;
+    while((c= toupper(line[count])) != '\0'){
+        if(c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'){
+            ++ *pv;
+        }
+        else if(c >= 'A' && c<= 'Z'){
+            ++ *pc;
+        }
+        else if(c >= '0' && c <= '9'){
+            ++ *pd;
+        }
+        else if(c == ' '){
+            ++ *pw;
+        }
+        else{
+            ++ *po;
+        }
+        count ++;
+    }
+    return;
+}
